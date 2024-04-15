@@ -21,7 +21,7 @@ jobs:
     - name: 📂 Sync files
       uses:  burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        switches: -avzr --delete --exclude=".git" --exclude=".github"  --exclude=".ssh"
         path: /
         remote_path: ~/
         remote_host: ${{ secrets.SSH_HOST }}
