@@ -1,0 +1,29 @@
+name: production CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.11]
+        
+    steps:
+    - uses: actions/checkout@v3
+        
+    - name: 📂 Sync files
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        path: /
+        remote_path: ~/
+        remote_host: ${{ secrets.SSH_HOST }}
+        remote_user: ${{ secrets.SSH_USER }}
+        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
