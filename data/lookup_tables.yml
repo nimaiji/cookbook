@@ -1,0 +1,430 @@
+version: "3.1"
+
+nlu:
+  - lookup: ingredients
+    examples: | 
+      - chicken
+      - beef
+      - pork
+      - tofu
+      - salmon
+      - shrimp
+      - tuna
+      - eggs
+      - milk
+      - butter
+      - cheese
+      - yogurt
+      - rice
+      - pasta
+      - bread
+      - potatoes
+      - onions
+      - garlic
+      - tomatoes
+      - carrots
+      - spinach
+      - lettuce
+      - bell peppers
+      - broccoli
+      - mushrooms
+      - green beans
+      - peas
+      - corn
+      - cucumbers
+      - zucchini
+      - eggplant
+      - avocados
+      - bananas
+      - apples
+      - oranges
+      - lemons
+      - strawberries
+      - blueberries
+      - raspberries
+      - blackberries
+      - grapes
+      - watermelon
+      - pineapple
+      - mango
+      - kiwi
+      - peaches
+      - pears
+      - cherries
+      - cranberries
+      - almonds
+      - walnuts
+      - peanuts
+      - cashews
+      - pecans
+      - hazelnuts
+      - pistachios
+      - sunflower seeds
+      - pumpkin seeds
+      - sesame seeds
+      - chia seeds
+      - quinoa
+      - oats
+      - barley
+      - lentils
+      - chickpeas
+      - black beans
+      - kidney beans
+      - green beans
+      - soybeans
+      - tofu
+      - tempeh
+      - edamame
+      - broccoli
+      - cauliflower
+      - cabbage
+      - Brussels sprouts
+      - kale
+      - collard greens
+      - arugula
+      - bok choy
+      - artichokes
+      - asparagus
+      - celery
+      - fennel
+      - leeks
+      - scallions
+      - shallots
+      - ginger
+      - turmeric
+      - cilantro
+      - basil
+      - parsley
+      - mint
+      - thyme
+      - rosemary
+      - oregano
+      - cinnamon
+      - nutmeg
+      - cloves
+      - garlic powder
+      - onion powder
+      - paprika
+      - cumin
+      - coriander
+      - chili powder
+      - black pepper
+      - salt
+      - sugar
+      - honey
+      - maple syrup
+      - olive oil
+      - vegetable oil
+      - coconut oil
+      - butter
+      - ghee
+      - soy sauce
+      - tamari
+      - Worcestershire sauce
+      - balsamic vinegar
+      - red wine vinegar
+      - apple cider vinegar
+      - rice vinegar
+      - white vinegar
+      - mustard
+      - ketchup
+      - mayonnaise
+      - barbecue sauce
+      - hot sauce
+      - salsa
+      - tahini
+      - hummus
+      - peanut butter
+      - almond butter
+      - jelly
+      - jam
+      - Nutella
+      - chocolate
+      - vanilla extract
+      - baking powder
+      - baking soda
+      - yeast
+      - flour
+      - cornstarch
+      - cocoa powder
+      - powdered sugar
+      - brown sugar
+      - confectioners sugar
+      - granulated sugar
+      - cane sugar
+      - white rice
+      - brown rice
+      - jasmine rice
+      - basmati rice
+      - wild rice
+      - quinoa
+      - couscous
+      - barley
+      - bulgur
+      - farro
+      - millet
+      - oats
+      - wheat
+      - rye
+      - spelt
+      - pasta
+      - noodles
+      - spaghetti
+      - fettuccine
+      - penne
+      - tortellini
+      - macaroni
+      - rigatoni
+      - linguine
+      - lasagna
+      - gnocchi
+      - polenta
+      - bread
+      - baguette
+      - sandwich bread
+      - whole wheat bread
+      - sourdough bread
+      - pita bread
+      - naan
+      - English muffins
+      - tortillas
+      - hamburger buns
+      - hot dog buns
+      - croissants
+      - muffins
+      - bagels
+      - crackers
+      - chips
+      - pretzels
+      - popcorn
+      - granola
+      - cereal
+      - oatmeal
+      - muesli
+      - yogurt
+      - Greek yogurt
+      - fruit yogurt
+      - flavored yogurt
+      - plain yogurt
+      - vanilla yogurt
+      - strawberry yogurt
+      - blueberry yogurt
+      - peach yogurt
+      - raspberry yogurt
+      - blackberry yogurt
+      - cherry yogurt
+      - coconut yogurt
+      - almond milk
+      - soy milk
+      - oat milk
+      - rice milk
+      - coconut milk
+      - cashew milk
+      - hemp milk
+      - flax milk
+      - walnut milk
+      - macadamia milk
+      - pea milk
+      - quinoa milk
+      - potato milk
+      - banana milk
+      - watermelon seed milk
+      - chestnut milk
+      - pecan milk
+      - sesame milk
+      - maca milk
+      - amaranth milk
+      - brazil nut milk
+      - buckwheat milk
+      - taro milk
+      - cow's milk
+      - goat's milk
+      - sheep's milk
+      - camel's milk
+      - buffalo milk
+      - donkey milk
+      - reindeer milk
+      - elk milk
+      - moose milk
+      - yak milk
+      - zebu milk
+      - horse milk
+      - pig milk
+      - dog milk
+      - cat milk
+      - whale milk
+      - dolphin milk
+      - elephant milk
+      - giraffe milk
+      - rhinoceros milk
+      - hippopotamus milk
+      - koala milk
+      - kangaroo milk
+      - platypus milk
+      - dingo milk
+      - emu milk
+      - ostrich milk
+      - cassowary milk
+      - kiwi milk
+      - wallaby milk
+      - wombat milk
+      - Tasmanian devil milk
+      - kangaroo rat milk
+      - potoroo milk
+      - bilby milk
+      - bandicoot milk
+      - numbat milk
+      - quokka milk
+      - sugar glider milk
+      - echidna milk
+      - kangaroo rat milk
+      - platypus milk
+      - echidna milk
+      - dingo milk
+      - quokka milk
+      - Tasmanian devil milk
+      - sugar glider milk
+      - bandicoot milk
+      - potoroo milk
+      - bilby milk
+      - koala milk
+      - kangaroo milk
+      - wallaby milk
+      - wombat milk
+      - kiwi milk
+      - cassowary milk
+      - emu milk
+      - ostrich milk
+
+
+  - lookup: dish
+    examples: |
+      - Homemade Bacon
+      - Cranberry Pork Chops
+      - BBQ Chicken Pizza
+      - Prosciutto and Onion Omelette
+      - Delicious Ham Omelette
+      - Asparagus Omelette
+      - Turkey Filled Omelette
+      - Foolproof Rosemary Chicken Wings
+      - Garlic-Ginger Chicken Wings
+      - BBQ Chicken Wings
+      - Tonkatsu Shoyu Ramen
+      - Quick and Creamy Pasta Carbonara
+      - Bacon and Mushroom Spaghett
+      - Italian Spaghetti with Ham
+      - Spaghetti Italian
+      - pizza
+      - spaghetti
+      - lasagna
+      - burger
+      - sushi
+      - tacos
+      - eggs
+      - scrambled eggs
+      - omelette
+      - french omelette
+      - chicken curry
+      - pad thai
+      - steak
+      - ramen
+      - fried rice
+      - pasta carbonara
+      - macaroni and cheese
+      - fried chicken
+      - curry
+      - risotto
+      - enchiladas
+      - salmon
+      - hamburger
+      - meatloaf
+      - burritos
+      - stir fry
+      - paella
+      - gnocchi
+      - chili
+      - sushi rolls
+      - sushi
+      - roast chicken
+      - quiche
+      - bibimbap
+      - beef stew
+      - falafel
+      - shepherd's pie
+      - chicken parmesan
+      - pho
+      - shrimp scampi
+      - tacos al pastor
+      - crab cakes
+      - chicken tikka masala
+      - ratatouille
+      - beef bourguignon
+      - moussaka
+      - coq au vin
+      - lobster bisque
+      - cannelloni
+      - fajitas
+      - beef wellington
+      - gnocchi
+      - shrimp stir fry
+      - chicken alfredo
+      - cauliflower rice
+      - caprese salad
+      - chicken salad
+      - spaghetti carbonara
+      - eggplant parmesan
+      - baked ziti
+      - lemon chicken
+      - chicken marsala
+      - beef tacos
+      - vegetable stir fry
+      - chicken enchiladas
+      - tuna salad
+      - salad
+      - beef stir fry
+      - vegetable soup
+      - mushroom risotto
+      - beef burritos
+      - chicken fajitas
+      - pork chops
+      - shrimp fried rice
+      - chicken pot pie
+      - beef stew
+      - seafood paella
+      - beef and broccoli
+      - chicken casserole
+      - vegetable lasagna
+      - beef teriyaki
+      - chicken soup
+      - beef fajitas
+      - vegetable curry
+      - spaghetti bolognese
+      - chicken teriyaki
+      - beef curry
+      - chicken stir fry
+      - pork tenderloin
+      - beef burrito bowl
+      - chicken tacos
+      - pork fried rice
+      - beef stroganoff
+      - chicken curry
+      - pork ribs
+      - vegetable curry
+      - beef kebabs
+      - chicken quesadillas
+      - pork chops
+      - beef enchiladas
+      - chicken parmigiana
+      - pork tenderloin
+      - beef and mushroom stir fry
+      - chicken korma
+      - pork loin roast
+      - beef and broccoli stir fry
+      - chicken piccata
+      - pork tenderloin
+      - beef and vegetable stir fry
+      - chicken pad thai
+      - pork carnitas
+      - beef and cabbage stir fry
+      - chicken lo mein
+      - pork chops

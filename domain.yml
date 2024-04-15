@@ -1,0 +1,122 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - affirm_ingredients
+  - reject_ingredients
+  - thanks
+  - nlu_fallback
+  - request_recipe
+  - input_ingredients_method
+  - provide_ingredients
+  - confirm_ingredient_change
+ # - affirm
+ # - deny
+#  - ask_recipe
+#  - ask_recipe_using_id
+#  - ingredient_info
+#  - cooking_time
+#  - confirm_ingredients
+#  - provide_recipe_options
+#  - accept_recipe
+#  - reject_recipe
+#  - provide_alternative_recipe
+#  - select_recipe_option
+#  - provide_replacements
+#  - provide_steps_confirmation
+
+
+entities:
+  - dish
+  - dish_id
+  - input_method
+  - ingredients
+
+slots:
+  dish:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: dish
+  dish_id:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: dish_id
+  input_method:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: input_method
+  ingredients:
+    type: list
+    mappings:
+      - type: from_entity
+        entity: ingredients
+
+responses:
+#  utter_provide_recipe:
+#    - text: "Here's a recipe for you!"
+#  utter_provide_recipe_using_id:
+#    - text: "Based on the provided ID, here are your instructions."
+#  utter_provide_ingredients:
+#    - text: "Here are the ingredients you'll need."
+#  utter_provide_cooking_time:
+#    - text: "Here's the cooking time."
+#  utter_ask_dish:
+#    - text: "What dish would you like a recipe for?"
+  utter_greet:
+  - text: "Hey! How are you?"
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_did_that_help:
+  - text: "Did that help you?"
+  utter_happy:
+  - text: "Great, carry on!"
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  utter_you_are_welcome:
+    - text: "You're welcome! Enjoy your meal!"
+  utter_default:
+    - text: "I'm sorry, I didn't quite understand. Can you please rephrase that?"
+  utter_input_ingredients_method:
+    - text: "You wish to cook {dish}. How would you like to share with us your available ingredients?"
+  utter_user_provide_ingredients:
+    - text: "Please, provide your ingredients."
+  utter_ingredients_received:
+    - text: "We received your ingredients"
+  utter_user_modify_ingredients:
+    - text: "Would you like to make another change to the current ingredient list?"
+
+actions:
+#  - action_provide_recipe
+#  - action_provide_recipe_using_id
+#  - action_provide_ingredients
+#  - action_provide_cooking_time
+#  - action_confirm_method_camera
+#  - action_confirm_method_typing
+  - action_confirm_ingredients
+  - action_provide_recipe_options
+#  - action_confirm_recipe
+#  - action_reject_recipe
+#  - action_provide_alternative_recipe
+#  - action_select_recipe_option
+#  - action_provide_replacements
+#  - action_provide_steps_confirmation
+  - action_extract_ingredients
+  - action_handle_input_method
+  - action_handle_ingredient_change
+  - action_generate_recipe
+#  - action_reject_ingredients
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

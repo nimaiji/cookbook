@@ -1,0 +1,311 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - wassup
+    - whats up
+
+- intent: goodbye
+  examples: |
+    - cu
+    - goodbye
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - see ya
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - thanks a lot
+    - thank you very much
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - good
+    - alright
+    - okay
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+  
+
+- intent: request_recipe
+  examples: |
+    - I need to cook [pizza](dish)
+    - How do i cook a [salad](dish)
+    - how do i cook [caprese salad](dish)
+    - Help me making [lasagna](dish)
+    - How to cook [dish_names](dish)
+    - Tell me the recipe of [tacos](dish)
+    - Tell me the recipe for [chicken curry](dish)
+    - Can you provide the recipe for [pad thai](dish)
+    - I want to prepare [dish_names](dish)
+    - Show me how to make [dish_names](dish)
+    - What's the cooking method for [risotto](dish)
+    - Give me instructions for [shepherd's pie](dish)
+    - Please share the recipe for [chicken tikka masala](dish)
+    - How can I prepare [scrambled eggs](dish)
+    - Provide the cooking steps for [dish_names](dish)
+    - I'm interested in cooking [spaghetti](dish)
+    - Guide me through making a [burger](dish)
+    - Teach me how to cook a [omelette](dish)
+    - Show me the ingredients and steps for [french omelette](dish)
+    - I'm looking for a recipe for [sushi](dish)
+    - I want to learn how to cook [salmon](dish)
+    - Share the method for making [hamburger](dish)
+    - What are the ingredients needed for [burritos](dish)
+
+- intent: input_ingredients_method
+  examples: |
+    - By [camera](input_method)
+    - By [typing](input_method)
+    - By [text](input_method)
+    - [camera](input_method)
+    - [typing](input_method)
+    - [visual recognition](input_method)
+    - [image recognition](input_method)
+    - [visual](input_method)
+    - [image](input_method)
+    - by [typing](input_method)
+    - by [camera](input_method)
+    - by [text](input_method)
+    - [camera](input_method)
+    - [text](input_method)
+    - Through [chat](input_method)
+    - [chat](input_method)
+    - i would like to input ingredients by [text](input_method)
+    - i would like to input ingredients by [chat](input_method)
+    - i would like to input ingredients by [camera](input_method)
+
+- intent: provide_ingredients
+  examples: | 
+    - Here are the ingredients: bread, tomatoes, ketchup, sausage
+    - My ingredients include: onions, peppers, cheese
+    - Ingredients: lettuce, chicken, dressing
+    - I have: rice, beans, avocado
+    - Check out my ingredients: pasta, sauce, mushrooms
+    - My list of ingredients is: flour, sugar, eggs, butter
+    - Here's what I'm working with: potatoes, carrots, broccoli
+    - This is my ingredient list: fish, lemon, herbs, garlic
+    - These are the ingredients I have: tofu, soy sauce, ginger, green onions
+    - Here's what I've got: spinach, feta cheese, olives
+    - Take a look at my ingredients: quinoa, kale, chickpeas
+
+- intent: confirm_ingredient_change
+  examples: |
+    - Yes, I want to change the [milk] to almond [milk]
+    - Yes, I would like to change [milk] for [almond milk]
+    - Change [bread] for [bagel]
+    - Switch [chicken] for [pea]
+    - Replace [beef] with [mushrooms]
+    - Change [pork] for [tofu]
+    - Replace [tofu] with [chicken]
+    - No, I'm okay with the current ingredients
+    - I'd like to change the [bread] to [whole wheat bread]
+    - No, the ingredients are fine as they are
+    - Yes, please let me modify the [sugar] to [honey]
+    - No, I'm happy with the ingredients
+
+- intent: affirm_ingredients
+  examples: |
+    - Yes, that's right
+    - Absolutely
+    - That's correct, thank you!
+    - Yes, those are the ingredients I have
+    - Yup, all good
+    - Thats good
+    - Thats it
+    - Correct
+    - Everything looks good
+    - Exactly
+    - Yup, that's it
+    - Perfect
+    - All set
+    - Indeed
+    - These ingredients are all good
+
+- intent: reject_ingredients
+  examples: | 
+    - No, I want to make another change
+    - no, these ingredients I do not have
+    - I dont have these
+    - These aren't the ingredients I have
+    - No, these wont work. Let's try something else
+    - no these wont work
+    - Sorry, I dont have these
+    - No i wish tomake another change
+    - No these are not the ingredients I have
+    - no not these ingredients
+    - I wish to make another change
+
+
+
+
+
+#- intent: affirm
+#  examples: |
+#    - yes
+#    - y
+#    - indeed
+#    - of course
+#    - that sounds good
+#    - correct
+
+#- intent: deny
+#  examples: |
+#    - no
+#    - n
+#    - never
+#    - I don't think so
+#    - don't like that
+#    - no way
+#    - not really
+
+#- intent: reject_ingredients
+#  example: |
+#    - No
+#    - I want another change
+#    - These ingredients are incorrect
+
+#- intent: ask_recipe
+#  examples: |
+#    - can you provide a recipe for [pasta](dish)?
+#    - i need a recipe for [pizza](dish)
+#    - how do i cook a [yogurt](dish)?
+#    - how do i cook a [salat](dish)?
+
+#- intent: ask_recipe_using_id
+#  examples: |
+#    - can you provide [12349](dish_id)?
+#    - i need recipe [123546](dish_id)
+#    - how do i cook recipe with id [324694](dish_id)?
+#    - i would like recipe [123622](dish_id)
+
+#- intent: ingredient_info
+#  examples: |
+#    - what are the ingredients for [lasagna](dish)?
+#    - tell me the ingredients needed for [tacos](dish)
+#    - what do i need to make [soup](dish)?
+
+#- intent: cooking_time
+#  examples: |
+#    - how long does it take to cook [risotto](dish)?
+#    - what's the cooking time for [stew](dish)?
+#    - how much time does [chicken curry](dish) take to cook?
+
+#- intent: confirm_ingredients
+#  examples: |
+#    - Yes
+#    - yes
+#    - okay
+#    - thats good
+#    - not exactly
+#    - no
+#   - No
+
+#- intent: provide_recipe_options
+#  examples: |
+#    - Yes
+#    - No
+#    - I don't like these
+#    - If there are other options for this
+#    - I need to get another one
+#    - I dont like
+
+#- intent: accept_recipe
+#  examples: |
+#    - Thanks. I will choose [option]
+#    - Yes
+
+#- intent: reject_recipe
+#  examples: |
+#    - I don't like these
+#    - No
+#    - If there are other options for this
+#    - I need to get another one
+
+#- intent: provide_alternative_recipe
+#  examples: |
+#    - Yes, provide me the other recipe list
+#    - Yes, I want to try out with other components
+
+#- intent: select_recipe_option
+#  examples: |
+#    - Choose one of the recipe options
+#   - Choose the ingredients that has to be changed and tell the new ingredients
+
+#- intent: provide_replacements
+#  examples: |
+#    - [Replacement list]
+#    - That's all
+#    - Nothing to change
+#    - There is nothing to replacement
+
+#- intent: provide_steps_confirmation
+#  examples: |
+#    - Yes
+#    - yes please
+#    - yea
+#    - sure
+#    - yep
+#    - No
+#    - no
+#    - nope
+#    - not needed
+#    - no thanks

@@ -1,0 +1,108 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+#  - intent: deny
+#  - action: utter_goodbye
+
+- story: say thanks
+  steps:
+  - intent: thanks
+  - action: utter_you_are_welcome
+
+- story: default fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default
+
+- story: request recipe and specify ingredients
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: request_recipe
+  - action: utter_input_ingredients_method
+  - intent: input_ingredients_method
+  - action: action_handle_input_method
+  - intent: provide_ingredients
+  - action: action_extract_ingredients
+  - intent: confirm_ingredient_change
+  - action: action_handle_ingredient_change
+  - intent: affirm_ingredients
+  - action: action_generate_recipe
+
+- story: extract ingredients and ask for confirmation to change
+  steps:
+  - intent: provide_ingredients
+  - action: action_extract_ingredients
+  - intent: confirm_ingredient_change
+  - action: action_handle_ingredient_change
+
+- story: user confirms ingredients
+  steps:
+  - intent: affirm_ingredients
+  - action: action_generate_recipe
+
+- story: ingredient change rejected, another change made, then approved
+  steps:
+  - action: action_handle_ingredient_change
+  - intent: reject_ingredients
+  - action: utter_user_modify_ingredients
+  - intent: confirm_ingredient_change
+  - action: action_handle_ingredient_change
+  - intent: affirm_ingredients
+  - action: action_generate_recipe
+
+#- story: greet and ask for recipe
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: ask_recipe
+#  - action: action_provide_recipe
+
+#- story: greet and ask for recipe using id
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: ask_recipe_using_id
+#  - action: action_provide_recipe_using_id
+#  - intent: input_ingredients_method
+#  - action: action_handle_input_method
+
+#- story: ask for ingredients
+#  steps:
+#  - intent: ask_recipe
+#  - action: action_provide_recipe
+#  - intent: ingredient_info
+#  - action: action_provide_ingredients
+
+#- story: ask for cooking time
+#  steps:
+#  - intent: ask_recipe
+#  - action: action_provide_recipe
+#  - intent: cooking_time
+#  - action: action_provide_cooking_time
+
