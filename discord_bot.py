@@ -3,12 +3,11 @@ import requests
 import os
 
 from rasa_connection import curl_request
-from dotenv import load_dotenv
+
 
 #Load Discord Bot Token
-load_dotenv()
-token = os.getenv('DISCORD_TOKEN')
-client = discord.Client()
+token = os.environ.get('DISCORD_TOKEN')
+client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
