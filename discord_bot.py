@@ -1,13 +1,17 @@
 import discord
 import requests
 import os
-
+from discord.ext import commands
 from rasa_connection import curl_request
 
 
 #Load Discord Bot Token
 token = os.environ.get('DISCORD_TOKEN')
-client = discord.Client(intents=discord.Intents.default())
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(intents=intents)
+# client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
@@ -17,8 +21,10 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	#Verify that the User is not the Bot itself
-	if message.author != client.user:
 
+	if message.author != client.user and message.channel.name == 'cookbook-bot':
+		if message.content == '!clear':
+			return await message.channel.purge()
 		#Use curl_request Function (located in rasa_connection.py)
 		answers = curl_request(message.content, str(message.author))
 
