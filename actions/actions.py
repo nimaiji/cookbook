@@ -6,11 +6,12 @@ import re
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import recipe_generator
 
 # define global variable to store ingredient list
 ingredients = []
 
-
+# Deprecated
 class ActionProvideRecipe(Action):
     def name(self) -> Text:
         return "action_provide_recipe"
@@ -58,7 +59,7 @@ class ActionProvideRecipe(Action):
                 text="Sorry, I didn't catch the dish name. Can you please specify the dish again?")
         return []
 
-
+# Deprecated
 class ActionProvideRecipeUsingId(Action):
     def name(self) -> Text:
         return "action_provide_recipe_using_id"
@@ -144,6 +145,11 @@ class ActionDefaultFallback(Action):
         dispatcher.utter_message(response="utter_default")
         return []
 
+def check_input(arr, input_method):
+    for item in arr:
+        if item in input_method:
+            return True
+    return False
 
 class HandleInputMethod(Action):
     def name(self) -> Text:
@@ -158,9 +164,9 @@ class HandleInputMethod(Action):
         if input_method:
             input_method = input_method.lower()  # Convert to lowercase for case-insensitive matching
 
-            if "typing" in input_method or "text" in input_method or "chat" in input_method:
+            if check_input(['typing', 'text', 'chat'], input_method):
                 dispatcher.utter_message(text="Okay, I'm ready to receive your input through text. Please type the ingredients.")
-            elif "camera" in input_method or "image" in input_method or "visual" in input_method:
+            elif check_input(['camera', 'image', 'visual'], input_method):
                 dispatcher.utter_message(text="Sure, you can use your camera to capture the ingredients. Please take a photo.")
             else:
                 dispatcher.utter_message(text="I'm sorry, I didn't understand how you'd like to provide the ingredients.")
@@ -218,11 +224,12 @@ class HandleIngredientChange(Action):
 
         if ingredient_change:
             # Apply the ingredient change to the global variable or any other appropriate data structure
-            #global ingredients
+            # global ingredients
             ingredients = self.apply_ingredient_change(ingredient_change, ingredients)
             # Inform the user about the successful ingredient change
             print(f"Current List of ingredients: {ingredients}")
             print(f"Current List of ingredients: {ingredient_change}")
+
             dispatcher.utter_message(text=f"The ingredient change was successfully applied. Your current ingredients are: {', '.join(ingredients)}\nIs the updated list okay?")
         else:
             dispatcher.utter_message(text="No ingredient change was detected.")
@@ -249,9 +256,6 @@ class HandleIngredientChange(Action):
         return ingredients
 
 
-# Load recipe data from CSV file
-recipe_data = pd.read_csv("/Users/viktorhatina/ai_chatbot/actions/modified_data.csv")
-
 class ActionGenerateRecipe(Action):
     def name(self) -> Text:
         return "action_generate_recipe"
@@ -261,31 +265,16 @@ class ActionGenerateRecipe(Action):
         dish = tracker.get_slot("dish") # Specifies the extracted dish
         dispatcher.utter_message(text=f"Your recipe is being generated.\n\n ***Functionality .{ingredients} and {dish}")
 
-        #
-        # ADD CODE HERE FOR RECIPE GENERATION
-        # Use variables dish and ingredients for recipe generation and output whatever...
-        #
 
+        result = suggest_recipe(ingredients)[0][1]
 
-        # Calculate cosine similarity between user input and recipe names
-        recipe_names = recipe_data["dish"]
-        vectorizer = CountVectorizer().fit_transform([ingredients] + recipe_names)
-        cosine_similarities = cosine_similarity(vectorizer[0:1], vectorizer[1:]).flatten()
-
-        # Get indices of top 5 most similar recipes
-        top_indices = cosine_similarities.argsort()[-5:][::-1]
-
-        # Fetch recipe details for the top 5 similar recipes
-        recommended_recipes = recipe_data.iloc[top_indices]
-
-        # Prepare response message with recommended recipes
-        response_message = "Here are some recipes you might like:\n"
-        for idx, row in recommended_recipes.iterrows():
-            response_message += f"Recipe ID: {row['recipe_id']}\n"
-            response_message += f"Recipe Name: {row['recipe_name']}\n"
-            response_message += f"Average Rating: {row['average_rating']}\n"
-            response_message += f"Ingredients: {row['ingredients']}\n"
-            response_message += "\n"
-
-        dispatcher.utter_message(text=response_message)
+        response_message = """
+        This recipe is the closest match to the ingredients provided.
+        
+        Name: {name}
+        This is the instruction:
+        {instruction}
+        
+        """
+        dispatcher.utter_message(text=response_message.format(instruction=result['instructions'], name=result['recipe_name']))
         return []
