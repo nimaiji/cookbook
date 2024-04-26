@@ -269,7 +269,8 @@ class ActionGenerateRecipe(Action):
 
 
         result = suggest_recipe(ingredients)[0][1]
-
+        print('RESULT:')
+        print(result)
         response_message = """
         This recipe is the closest match to the ingredients provided.
         
@@ -278,5 +279,8 @@ class ActionGenerateRecipe(Action):
         {instruction}
         
         """
-        dispatcher.utter_message(text=response_message.format(instruction=result['instructions'], name=result['recipe_name']))
+        final_text = response_message.format(instruction=result['instructions'], name=result['recipe_name'])
+        print(final_text)
+
+        dispatcher.utter_message(text=final_text)
         return []
