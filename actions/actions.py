@@ -265,7 +265,7 @@ class ActionGenerateRecipe(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         global ingredients # Specifies the extracted ingredients
         dish = tracker.get_slot("dish") # Specifies the extracted dish
-        dispatcher.utter_message(text=f"Your recipe is being generated.\n\n ***Functionality .{ingredients} and {dish}")
+        # dispatcher.utter_message(text=f"Your recipe is being generated.\n\n ***Functionality .{ingredients} and {dish}")
 
 
         result = suggest_recipe(ingredients)[0][1]
