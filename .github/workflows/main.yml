@@ -27,3 +27,18 @@ jobs:
         remote_host: ${{ secrets.SSH_HOST }}
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Running Rasa
+    - uses: appleboy/ssh-action@v0.1.10
+      with:
+        host:  ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        command_timeout: 30m
+        script: | 
+          cd app/
+          rasa train
+          python3 discord_bot.py &
+          rasa run --enable-api --credentials credentials.yml --cors "*" &
+          rasa run actions &
+          
