@@ -36,7 +36,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         command_timeout: 30m
         script: | 
-          cd app/
+          cd ~/app/
           rasa train
           python3 discord_bot.py &
           rasa run --enable-api --credentials credentials.yml --cors "*" &
