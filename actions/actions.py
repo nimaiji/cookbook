@@ -145,15 +145,17 @@ class ActionDefaultFallback(Action):
         dispatcher.utter_message(response="utter_default")
         return []
 
-def check_input(arr, input_method):
-    for item in arr:
-        if item in input_method:
-            return True
-    return False
+
 
 class HandleInputMethod(Action):
     def name(self) -> Text:
         return "action_handle_input_method"
+
+    def check_input(self, arr, input_method):
+        for item in arr:
+            if item in input_method:
+                return True
+        return False
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         global ingredients  # Declare the variable as global
@@ -164,9 +166,9 @@ class HandleInputMethod(Action):
         if input_method:
             input_method = input_method.lower()  # Convert to lowercase for case-insensitive matching
 
-            if check_input(['typing', 'text', 'chat'], input_method):
+            if self.check_input(['typing', 'text', 'chat'], input_method):
                 dispatcher.utter_message(text="Okay, I'm ready to receive your input through text. Please type the ingredients.")
-            elif check_input(['camera', 'image', 'visual'], input_method):
+            elif self.check_input(['camera', 'image', 'visual'], input_method):
                 dispatcher.utter_message(text="Sure, you can use your camera to capture the ingredients. Please take a photo.")
             else:
                 dispatcher.utter_message(text="I'm sorry, I didn't understand how you'd like to provide the ingredients.")
