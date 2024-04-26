@@ -265,9 +265,6 @@ class ActionGenerateRecipe(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         global ingredients # Specifies the extracted ingredients
         dish = tracker.get_slot("dish") # Specifies the extracted dish
-        print(ingredients)
-        # dispatcher.utter_message(text=f"Your recipe is being generated.\n\n ***Functionality .{ingredients} and {dish}")
-
 
         result = recipe_generator.suggest_recipe(ingredients)[0][1]
         print('RESULT:')
@@ -276,11 +273,12 @@ class ActionGenerateRecipe(Action):
         This recipe is the closest match to the ingredients provided.
         
         Name: {name}
-        This is the instruction:
+        
+        Ingredients: {original_ingrd}
         {instruction}
         
         """
-        final_text = response_message.format(instruction=result['instructions'], name=result['recipe_name'])
+        final_text = response_message.format(instruction=result['instructions'], name=result['recipe_name'], original_ingrd=result['ingredients'])
         print(final_text)
 
         dispatcher.utter_message(text=final_text)
