@@ -269,7 +269,7 @@ class ActionGenerateRecipe(Action):
         # dispatcher.utter_message(text=f"Your recipe is being generated.\n\n ***Functionality .{ingredients} and {dish}")
 
 
-        result = suggest_recipe(ingredients)[0][1]
+        result = recipe_generator.suggest_recipe(ingredients)[0][1]
         print('RESULT:')
         print(result)
         response_message = """
