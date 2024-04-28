@@ -26,45 +26,18 @@ rules:
   steps:
   - intent: input_ingredients_method
   - action: action_handle_input_method
-#  - action: utter_user_provide_ingredients
 
 - rule: User provides ingredients
   steps:
   - intent: provide_ingredients
   - action: action_extract_ingredients
 
-- rule: confirm ingredients
+- rule: user_accepts modification_question
   steps:
   - intent: confirm_ingredient_change
   - action: action_handle_ingredient_change
 
-- rule: user_confirms_ingredients
+- rule: user_rejects_modification_question
   steps:
-  - intent: affirm_ingredients
-  - action: action_generate_recipe
-
-- rule: rejected_ingredient_list_followed_by_modification
-  steps:
-  - intent: reject_ingredients
-  - action: utter_user_modify_ingredients
-
-#- rule: provide recipe
-#  steps:
-#  - intent: ask_recipe
-#  - action: action_provide_recipe
-
-#- rule: provide recipe_using_id
-#  steps:
-#  - intent: ask_recipe_using_id
-#  - action: action_provide_recipe_using_id
-
-#- rule: provide ingredients
-#  steps:
-#  - intent: ingredient_info
-#  - action: action_provide_ingredients
-
-#- rule: provide cooking time
-#  steps:
-#  - intent: cooking_time
-#  - action: action_provide_cooking_time
-
+    - intent: no_ing_changes
+    - action: action_generate_recipe
