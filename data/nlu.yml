@@ -260,7 +260,7 @@ nlu:
     - Let me show you what I've got: potatoes, cheddar cheese, bacon
 
 - intent: confirm_ingredient_change
-  examples: | 
+  examples: |
     - Yes, I want to change the [milk](item1) to almond [milk](item2)
     - Yes, I would like to change [milk](item1) for [almond milk](item2)
     - Change [bread](item1) for [bagel](item2)
@@ -292,6 +292,7 @@ nlu:
     - Can I change [honey](item1) for [cheese](item2)?
 
 
+
 - intent: no_ing_changes
   examples: | 
     - No, these are okay
@@ -306,3 +307,4 @@ nlu:
     - These ingredients are fine
     - I don't need to change anything
     - Keep the ingredients the same
+

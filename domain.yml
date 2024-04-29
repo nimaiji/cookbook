@@ -6,7 +6,6 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-
   - thanks
   - nlu_fallback
   - request_recipe
@@ -14,6 +13,7 @@ intents:
   - provide_ingredients
   - confirm_ingredient_change
   - no_ing_changes
+
 
 
 entities:
@@ -76,7 +76,7 @@ actions:
   - action_handle_input_method
   - action_handle_ingredient_change
   - action_generate_recipe
-
+  
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

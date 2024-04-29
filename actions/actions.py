@@ -11,113 +11,6 @@ import recipe_generator
 # define global variable to store ingredient list
 ingredients = []
 
-# Deprecated
-class ActionProvideRecipe(Action):
-    def name(self) -> Text:
-        return "action_provide_recipe"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dish = tracker.get_slot("dish")
-
-        if dish:
-            print("Current Dish: ", dish)
-            # Call Spoonacular API to get recipe data
-              
-            # This returns recipe information based on recipe ID
-            recipe_id = 716429
-            api_key = "dfc754527d234b609c4c2597e0f2e04b"
-            endpoint = f"https://api.spoonacular.com/recipes/{recipe_id}/information?includeNutrition=false&apiKey={api_key}"
-            response = requests.get(endpoint)
-            print(f"exported dish: {len(dish)}")
-            if response.status_code == 200:
-                data = response.json()
-
-                products = data.get("products", [])
-
-                if products:
-                    ingredients = []
-                    # Extract information from the first product
-                    for i in range(len(products)):
-                        ingredients.append(products[i].get("title", "Unknown"))
-
-                    ingredients_text = f""
-                    for i in range(len(ingredients)):
-                        ingredients_text += (ingredients[i] + "\n")
-
-                    # Construct the response message
-                    response_message = f"Here's a recipe for {dish}: {ingredients_text}\n"
-
-                    # Send the response to the user
-                    dispatcher.utter_message(text=response_message)
-                else:
-                    dispatcher.utter_message(text="Sorry, I couldn't find a recipe for that dish 111.")
-            else:
-                dispatcher.utter_message(
-                    text="Sorry, there was an error fetching the recipe. Please try again later.")
-        else:
-            dispatcher.utter_message(
-                text="Sorry, I didn't catch the dish name. Can you please specify the dish again?")
-        return []
-
-# Deprecated
-class ActionProvideRecipeUsingId(Action):
-    def name(self) -> Text:
-        return "action_provide_recipe_using_id"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # Get the recipe ID from the tracker
-        recipe_id = tracker.get_slot("dish_id")
-        print("Extracted recipe id: ", recipe_id)
-
-        if recipe_id:
-            # Call Spoonacular API to get recipe instructions based on recipe ID
-            api_key = "dfc754527d234b609c4c2597e0f2e04b"
-            endpoint = f"https://api.spoonacular.com/recipes/{recipe_id}/analyzedInstructions?stepBreakdown=true&apiKey={api_key}"
-            response = requests.get(endpoint)
-
-            if response.status_code == 200:
-                data = response.json()
-                instructions = []
-                if data:
-                    for section in data:
-                        for step in section.get("steps", []):
-                            step_number = step.get("number")
-                            instruction = step.get("step")
-                            instructions.append(f"Step {step_number}: {instruction}")
-
-                    # Construct the response message
-                    response_message = "\n".join(instructions)
-                else:
-                    response_message = "Unfortunately, we do not have detailed instructions for this recipe."
-                # Send the response to the user
-                dispatcher.utter_message(text=response_message)
-            else:
-                dispatcher.utter_message(
-                    text="Sorry, there was an error fetching the recipe instructions. Please try again later.")
-        else:
-            dispatcher.utter_message(
-                text="Sorry, I didn't catch the recipe ID. Can you please provide the recipe ID again?")
-
-        return []
-
-
-class ActionProvideIngredients(Action):
-    def name(self) -> Text:
-        return "action_provide_ingredients"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(response="utter_provide_ingredients")
-        return []
-
-
-class ActionProvideCookingTime(Action):
-    def name(self) -> Text:
-        return "action_provide_cooking_time"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(response="utter_provide_cooking_time")
-        return []
-
 
 class ActionUtterGoodbye(Action):
     def name(self) -> Text:
@@ -244,7 +137,7 @@ class HandleIngredientChange(Action):
             print(f"Current List of ingredients: {ingredients}")
             print(f"Current List of ingredients: {ingredient_change}")
 
-            dispatcher.utter_message(text=f"The ingredient change was successfully applied. Your current ingredients are: {', '.join(ingredients)}\nIs the updated list okay?")
+            dispatcher.utter_message(text=f"The ingredient change was successfully applied. Your current ingredients are: {', '.join(ingredients)}\nWould you like to make other changes?")
         else:
             dispatcher.utter_message(text="No ingredient change was detected.")
 
