@@ -79,28 +79,35 @@ class ExtractIngredients(Action):
         print("This is the dish {}".format(dish))
         # Get the user's message
         message = tracker.latest_message.get("text", "")
+        tmp = message.split(":")
+        print(tmp)
+        if len(tmp) > 1:
+            ingredients = [x.strip() for x in tmp[1].split(",")]
+        else:
+            ingredients = [x.strip() for x in tmp[0].split(",")]
 
-        # Define regular expression pattern to extract ingredients
-        pattern = r'(?i)(?:Here are the ingredients:|I have the following ingredients: |My ingredients include:|Ingredients:|I have:|I have |Check out my ingredients:|My list of ingredients is:|Here\'s what I\'m working with:|This is my ingredient list:|These are the ingredients I have:|Here\'s what I\'ve got:|Take a look at my ingredients:)\s*(.*)'
-        match = re.search(pattern, message)
-
-        if match:
-            # Extract the ingredients text
-            ingredients_text = match.group(1).strip()
-
-            # Split the ingredients text into individual ingredients
-            ingredients_list = re.split(r',|;|and|\band\b', ingredients_text)
-
-            # Remove empty strings and leading/trailing whitespace
-            ingredients_list = [ingredient.strip() for ingredient in ingredients_list if ingredient.strip()]
-            ingredients = ingredients_list
-            # Send a message back with the extracted ingredients
-            if ingredients_list:
-                dispatcher.utter_message(text=f"Received ingredients: {', '.join(ingredients_list)}\nWould you like to change any ingredients?")
-            else:
-                dispatcher.utter_message(text="No ingredients found.")
+        print(f"Current List of ingredients: {ingredients}")
+        if len(ingredients) > 0:
+            dispatcher.utter_message(text=f"Received ingredients: {', '.join(ingredients)}\nWould you like to change any ingredients?")
         else:
             dispatcher.utter_message(text="No ingredients found.")
+
+        return []
+
+class HandleIngredientChangeConfirmation(Action):
+
+    def name(self) -> Text:
+        return "confirm_ingredient_change"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        global ingredients  # Declare the variable as global
+        # Get the user's message
+        message = tracker.latest_message.get("text", "")
+
+        if 'no' in message.lower():
+            dispatcher.utter_message(text="Okay, let's proceed with the current list of ingredients.")
+        else:
+            dispatcher.utter_message(text="Please provide the ingredient change request in the format '<old> to <new>'.")
 
         return []
 
@@ -113,6 +120,11 @@ class HandleIngredientChange(Action):
         global ingredients  # Declare the variable as global
         # Get the user's message
         message = tracker.latest_message.get("text", "")
+        
+        item1 = tracker.get_slot("item1")
+        item2 = tracker.get_slot("item2")
+        print("Item1: ", item1)
+        print("Item2: ", item2)
 
         # Extract the ingredient change request
         ingredient_change = self.extract_ingredient_change(message)
@@ -132,7 +144,7 @@ class HandleIngredientChange(Action):
         return []
 
     def extract_ingredient_change(self, message: Text) -> Dict[Text, Text]:
-        # Define a regular expression pattern to extract ingredient change requests
+
         pattern = r"(change|switch|replace) (.+?) (for|with) (.+)"
         match = re.search(pattern, message.lower())
         if match:
@@ -158,7 +170,7 @@ class ActionGenerateRecipe(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         global ingredients # Specifies the extracted ingredients
         dish = tracker.get_slot("dish") # Specifies the extracted dish
-
+        print(f'ingredients: {ingredients}')
         result = recipe_generator.suggest_recipe(ingredients)[0][1]
         print('RESULT:')
         print(result)

@@ -12,7 +12,8 @@ intents:
   - input_ingredients_method
   - provide_ingredients
   - confirm_ingredient_change
-  - ing_no_changes
+  - no_ing_changes
+
 
 
 entities:
@@ -52,23 +53,21 @@ responses:
   utter_did_that_help:
   - text: "Did that help you?"
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Great, carry on! How can I help you today?"
   utter_goodbye:
   - text: "Bye"
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "I am just a bot, powered by Rasa. How can I help you?"
   utter_you_are_welcome:
     - text: "You're welcome! Enjoy your meal!"
   utter_default:
     - text: "I'm sorry, I didn't quite understand. Can you please rephrase that?"
   utter_input_ingredients_method:
-    - text: "You wish to cook {dish}. How would you like to share with us your available ingredients?"
+    - text: "{dish}, great choice. How would you like to share with us your available ingredients? (text, camera)"
   utter_user_provide_ingredients:
     - text: "Please, provide your ingredients."
   utter_ingredients_received:
     - text: "We received your ingredients"
-  utter_user_modify_ingredients:
-    - text: "Would you like to make another change to the current ingredient list?"
 
 actions:
   - action_confirm_ingredients
@@ -77,8 +76,7 @@ actions:
   - action_handle_input_method
   - action_handle_ingredient_change
   - action_generate_recipe
-
-
+  
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
