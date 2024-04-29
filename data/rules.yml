@@ -33,20 +33,25 @@ rules:
   - intent: provide_ingredients
   - action: action_extract_ingredients
 
-- rule: confirm ingredients
+- rule: user_accepts modification_question
   steps:
   - intent: confirm_ingredient_change
   - action: action_handle_ingredient_change
 
-- rule: user_confirms_ingredients
+- rule: user_rejects_modification_question
   steps:
-  - intent: affirm_ingredients
-  - action: action_generate_recipe
-
-- rule: rejected_ingredient_list_followed_by_modification
-  steps:
-  - intent: reject_ingredients
-  - action: utter_user_modify_ingredients
+    - intent: no_ing_changes
+    - action: action_generate_recipe
+#
+#- rule: user_confirms_ingredients
+#  steps:
+#  - intent: affirm_ingredients
+#  - action: action_generate_recipe
+#
+#- rule: rejected_ingredient_list_followed_by_modification
+#  steps:
+#  - intent: reject_ingredients
+#  - action: utter_user_modify_ingredients
 
 #- rule: provide recipe
 #  steps:

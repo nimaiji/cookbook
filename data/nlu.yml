@@ -18,6 +18,21 @@ nlu:
     - good afternoon
     - wassup
     - whats up
+    - howdy
+    - hey friend
+    - hiya
+    - hey folks
+    - hey you
+    - hey buddy
+    - hola
+    - bonjour
+    - sup
+    - yo
+    - hi there
+    - morning
+    - evening
+    - hey man
+    - hiya there
 
 - intent: goodbye
   examples: |
@@ -32,6 +47,17 @@ nlu:
     - bye bye
     - see you later
     - see ya
+    - take care
+    - farewell
+    - adios
+    - catch you later
+    - until next time
+    - peace out
+    - take it easy
+    - later
+    - see you soon
+    - stay safe
+    - until we meet again
 
 - intent: thanks
   examples: |
@@ -39,6 +65,21 @@ nlu:
     - thank you
     - thanks a lot
     - thank you very much
+    - much appreciated
+    - thanks heaps
+    - thank you so much
+    - thanks a bunch
+    - many thanks
+    - thanks for your help
+    - thank you kindly
+    - I appreciate it
+    - you're a lifesaver
+    - cheers
+    - thanks buddy
+    - big thanks
+    - thanks a million
+    - thank you loads
+    - thanks for everything
 
 - intent: mood_great
   examples: |
@@ -59,6 +100,30 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - fantastic
+    - fabulous
+    - marvelous
+    - splendid
+    - excellent
+    - terrific
+    - superb
+    - awesome
+    - outstanding
+    - top-notch
+    - phenomenal
+    - over the moon
+    - on cloud nine
+    - feeling fantastic
+    - Life couldn't be better!
+    - Today is a great day!
+    - Everything is going my way.
+    - I'm full of energy and positivity.
+    - I'm loving life right now.
+    - This is the best day ever!
+    - I'm in an excellent mood.
+    - I feel like I can conquer anything.
+    - My spirits are soaring high!
+    - Happiness is overflowing within me.
 
 - intent: mood_unhappy
   examples: |
@@ -73,9 +138,26 @@ nlu:
     - unhappy
     - not good
     - not very good
-    - extremly sad
+    - extremely sad
     - so saad
     - so sad
+    - feeling down
+    - feeling blue
+    - feeling gloomy
+    - feeling low
+    - feeling miserable
+    - feeling depressed
+    - feeling dejected
+    - feeling despondent
+    - feeling disheartened
+    - feeling crestfallen
+    - feeling heartbroken
+    - feeling defeated
+    - feeling crushed
+    - feeling sorrowful
+    - feeling troubled
+    - feeling upset
+    - feeling distressed
 
 - intent: bot_challenge
   examples: |
@@ -83,10 +165,21 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - are you automated?
+    - are you artificial intelligence?
+    - are you a machine?
+    - are you a real person?
+    - are you programmed to respond like this?
+    - are you a chatbot?
+    - am I interacting with AI?
+    - are you a computer program?
+    - are you human or AI?
+    - are you a living being?
   
 
 - intent: request_recipe
   examples: |
+    - I like to have a [pizza](dish)
     - I need to cook [pizza](dish)
     - How do i cook a [salad](dish)
     - how do i cook [caprese salad](dish)
@@ -132,6 +225,14 @@ nlu:
     - i would like to input ingredients by [text](input_method)
     - i would like to input ingredients by [chat](input_method)
     - i would like to input ingredients by [camera](input_method)
+    - I prefer inputting ingredients by [typing](input_method)
+    - I prefer inputting ingredients by [camera](input_method)
+    - Can I input ingredients through [text](input_method)?
+    - Is it possible to input ingredients via [chat](input_method)?
+    - How can I input ingredients using [camera](input_method)?
+    - Can I input ingredients by [typing](input_method) or [camera](input_method)?
+    - I'm comfortable inputting ingredients by [text](input_method).
+    - Would you recommend inputting ingredients through [chat](input_method)?
 
 - intent: provide_ingredients
   examples: | 
@@ -139,6 +240,7 @@ nlu:
     - My ingredients include: onions, peppers, cheese
     - Ingredients: lettuce, chicken, dressing
     - I have: rice, beans, avocado
+    - bread, pizza, butter, cheese
     - Check out my ingredients: pasta, sauce, mushrooms
     - My list of ingredients is: flour, sugar, eggs, butter
     - Here's what I'm working with: potatoes, carrots, broccoli
@@ -146,166 +248,61 @@ nlu:
     - These are the ingredients I have: tofu, soy sauce, ginger, green onions
     - Here's what I've got: spinach, feta cheese, olives
     - Take a look at my ingredients: quinoa, kale, chickpeas
+    - I've gathered the following ingredients: tomatoes, basil, mozzarella
+    - Let me share the ingredients I've gathered: chicken, bell peppers, onions
+    - Here's my list of ingredients: eggs, bacon, cheese, milk
+    - I've got everything ready: beef, bell peppers, onions, rice
+    - These are the ingredients I've prepared: spinach, mushrooms, tomatoes
+    - Check out the ingredients I've collected: lentils, carrots, celery
+    - Take a peek at my ingredients: pasta, pesto, pine nuts
+    - My ingredients for the recipe are: apples, cinnamon, sugar, flour
+    - I've gathered all the necessary ingredients: noodles, bok choy, broth
+    - Let me show you what I've got: potatoes, cheddar cheese, bacon
 
 - intent: confirm_ingredient_change
-  examples: |
-    - Yes, I want to change the [milk] to almond [milk]
-    - Yes, I would like to change [milk] for [almond milk]
-    - Change [bread] for [bagel]
-    - Switch [chicken] for [pea]
-    - Replace [beef] with [mushrooms]
-    - Change [pork] for [tofu]
-    - Replace [tofu] with [chicken]
-    - No, I'm okay with the current ingredients
-    - I'd like to change the [bread] to [whole wheat bread]
-    - No, the ingredients are fine as they are
-    - Yes, please let me modify the [sugar] to [honey]
-    - No, I'm happy with the ingredients
-
-- intent: affirm_ingredients
-  examples: |
-    - Yes, that's right
-    - Absolutely
-    - That's correct, thank you!
-    - Yes, those are the ingredients I have
-    - Yup, all good
-    - Thats good
-    - Thats it
-    - Correct
-    - Everything looks good
-    - Exactly
-    - Yup, that's it
-    - Perfect
-    - All set
-    - Indeed
-    - These ingredients are all good
-
-- intent: reject_ingredients
   examples: | 
-    - No, I want to make another change
-    - no, these ingredients I do not have
-    - I dont have these
-    - These aren't the ingredients I have
-    - No, these wont work. Let's try something else
-    - no these wont work
-    - Sorry, I dont have these
-    - No i wish tomake another change
-    - No these are not the ingredients I have
-    - no not these ingredients
-    - I wish to make another change
+    - Yes, I want to change the [milk](item1) to almond [milk](item2)
+    - Yes, I would like to change [milk](item1) for [almond milk](item2)
+    - Change [bread](item1) for [bagel](item2)
+    - Switch [chicken](item1) for [pea](item2)
+    - Replace [beef](item1) with [mushrooms](item2)
+    - Change [pork](item1) for [tofu](item2)
+    - Replace [tofu](item1) with [chicken](item2)
+    - I'd like to change the [bread](item1) to [whole wheat bread](item2)
+    - Yes, please let me modify the [sugar](item1) to [honey](item2)
+    - change [bread](item1) to [toast](item2)
+    - switch [bread](item1) to [toast](item2)
+    - replace [tomatoes](item1) with [salad](item2)
+    - Yes
+    - yes
+    - Change [salt](item1) to [sea salt](item2)
+    - Switch [butter](item1) for [olive oil](item2)
+    - Replace [sugar](item1) with [maple syrup](item2)
+    - Can I replace [eggs](item1) with [bacon](item2)?
+    - I'd like to change [rice](item1) to [quinoa](item2)
+    - Yes, I want to modify the [cheese](item1) to [vegan cheese](item2)
+    - Change [cheese](item1) for [yogurt](item2)
+    - Replace [white bread](item1) with [rye bread](item2)
+    - Can I switch [spinach](item1) for [kale](item2)?
+    - I'd like to change [vanilla extract](item1) to [almond extract](item2)
+    - Yes, please modify the [chocolate](item1) to [dark chocolate](item2)
+    - change [baking powder](item1) to [baking soda](item2)
+    - switch [peanut butter](item1) to [almond butter](item2)
+    - replace [cabbage](item1) with [lettuce](item2)
+    - Can I change [honey](item1) for [cheese](item2)?
 
 
-
-
-
-#- intent: affirm
-#  examples: |
-#    - yes
-#    - y
-#    - indeed
-#    - of course
-#    - that sounds good
-#    - correct
-
-#- intent: deny
-#  examples: |
-#    - no
-#    - n
-#    - never
-#    - I don't think so
-#    - don't like that
-#    - no way
-#    - not really
-
-#- intent: reject_ingredients
-#  example: |
-#    - No
-#    - I want another change
-#    - These ingredients are incorrect
-
-#- intent: ask_recipe
-#  examples: |
-#    - can you provide a recipe for [pasta](dish)?
-#    - i need a recipe for [pizza](dish)
-#    - how do i cook a [yogurt](dish)?
-#    - how do i cook a [salat](dish)?
-
-#- intent: ask_recipe_using_id
-#  examples: |
-#    - can you provide [12349](dish_id)?
-#    - i need recipe [123546](dish_id)
-#    - how do i cook recipe with id [324694](dish_id)?
-#    - i would like recipe [123622](dish_id)
-
-#- intent: ingredient_info
-#  examples: |
-#    - what are the ingredients for [lasagna](dish)?
-#    - tell me the ingredients needed for [tacos](dish)
-#    - what do i need to make [soup](dish)?
-
-#- intent: cooking_time
-#  examples: |
-#    - how long does it take to cook [risotto](dish)?
-#    - what's the cooking time for [stew](dish)?
-#    - how much time does [chicken curry](dish) take to cook?
-
-#- intent: confirm_ingredients
-#  examples: |
-#    - Yes
-#    - yes
-#    - okay
-#    - thats good
-#    - not exactly
-#    - no
-#   - No
-
-#- intent: provide_recipe_options
-#  examples: |
-#    - Yes
-#    - No
-#    - I don't like these
-#    - If there are other options for this
-#    - I need to get another one
-#    - I dont like
-
-#- intent: accept_recipe
-#  examples: |
-#    - Thanks. I will choose [option]
-#    - Yes
-
-#- intent: reject_recipe
-#  examples: |
-#    - I don't like these
-#    - No
-#    - If there are other options for this
-#    - I need to get another one
-
-#- intent: provide_alternative_recipe
-#  examples: |
-#    - Yes, provide me the other recipe list
-#    - Yes, I want to try out with other components
-
-#- intent: select_recipe_option
-#  examples: |
-#    - Choose one of the recipe options
-#   - Choose the ingredients that has to be changed and tell the new ingredients
-
-#- intent: provide_replacements
-#  examples: |
-#    - [Replacement list]
-#    - That's all
-#    - Nothing to change
-#    - There is nothing to replacement
-
-#- intent: provide_steps_confirmation
-#  examples: |
-#    - Yes
-#    - yes please
-#    - yea
-#    - sure
-#    - yep
-#    - No
-#    - no
-#    - nope
-#    - not needed
-#    - no thanks
+- intent: no_ing_changes
+  examples: | 
+    - No, these are okay
+    - No
+    - no
+    - No, proceed with these ingredients
+    - nope
+    - no thank you
+    - NO
+    - I'm good with these ingredients
+    - Leave the ingredients as they are
+    - These ingredients are fine
+    - I don't need to change anything
+    - Keep the ingredients the same

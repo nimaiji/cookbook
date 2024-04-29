@@ -1,0 +1,12 @@
+.venv
+.rasa
+.github
+.config
+.cache
+.vscode
+.python-version
+yolov5s.pt
+*.jpg
+*.jpeg
+*.gz
+*.pyc
