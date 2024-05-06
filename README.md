@@ -1,4 +1,4 @@
-# 🍳 Cooking Assitant Bot 
+# 🍳 Cooking Assistant Bot 
 This project aims to utilize computer vision models like YOLO within a Rasa bot to create an experience for users to obtain their desired recipes. It is runnable on CPU. Also, it is accessible in a [discord server]('https://discord.gg/ttBuk39J'). Feel free to join and test the bot.
 
 ## Running as a dicord Bot
